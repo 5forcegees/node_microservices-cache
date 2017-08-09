@@ -1,0 +1,22 @@
+{
+  "name": "cache",
+  "version": "1.0.0",
+  "description": "Caching library",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://innersource.accenture.com/projects/NMI/repos/cache"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "application-configuration": "git+ssh://git@innersource.accenture.com/nmi/application-configuration.git",
+    "bluebird": "^3.4.7",
+    "confidence": "^3.0.2",
+    "logging": "git+ssh://git@innersource.accenture.com/nmi/logging.git",
+    "redis": "^2.6.3"
+  }
+}

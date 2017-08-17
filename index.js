@@ -88,7 +88,7 @@ const cacheWrite = function cacheWrite(key, field, data) {
       return client.hsetAsync(key, field, JSON.stringify(data))
     })
     .then(function(res) {
-      logger.log.info(logTypes.fnInside({
+      generalLogger.log.info(logTypes.fnInside({
         clientId:key,
         field: field,
         data: JSON.stringify(data)
@@ -102,7 +102,7 @@ const cacheWrite = function cacheWrite(key, field, data) {
       }
     })
     .catch(function(err) {
-      logger.log.error(logTypes.fnExit({
+      generalLogger.log.error(logTypes.fnExit({
         key:key,
         field:field,
         data: JSON.stringify(data)
@@ -114,7 +114,7 @@ const cacheMultiWrite = function cacheMultiWrite(key, dataArray, expiresIn ) {
   const client = getRedisClient();
   return client.hmsetAsync(key, dataArray)
     .then(function(res) {
-      logger.log.info(logTypes.fnInside({
+      generalLogger.log.info(logTypes.fnInside({
         key:key,
         data: JSON.stringify(dataArray),
         expires: `${expiresIn} min`
@@ -123,7 +123,7 @@ const cacheMultiWrite = function cacheMultiWrite(key, dataArray, expiresIn ) {
       return client.expireAsync(key, expiresIn * 60);
     })
     .catch(function(err) {
-      logger.log.error(logTypes.fnExit({
+      generalLogger.log.error(logTypes.fnExit({
         key:key,
         data: JSON.stringify(dataArray)
       }), `Unable to cacheMultiWrite`);
